@@ -1,37 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class debug : MonoBehaviour {
 
-    public void AddMoneySmall()
+    public InputField moneyField;
+    public InputField customerField;
+    public Slider customerSatisfaction;
+
+    public GameObject Dropdown;
+
+    public void addMoney()
     {
-        gameObject.GetComponent<money>().moneyAmount += 1;
+        gameObject.GetComponent<money>().moneyAmount += int.Parse(moneyField.text);
     }
 
-    public void AddMoneyLarge()
+    public void minusMoney()
     {
-        gameObject.GetComponent<money>().moneyAmount += 10000;
+        gameObject.GetComponent<money>().moneyAmount -= int.Parse(moneyField.text);
     }
 
-    public void AddMoneyInfi()
+    public void addCustomer()
     {
-        gameObject.GetComponent<money>().moneyAmount = 9999999999999999;
+        Dropdown.GetComponent<contractselect>().potentialCustomers += int.Parse(customerField.text);
     }
 
-    public void MinusMoneySmall()
+    public void minusCustomer()
     {
-        gameObject.GetComponent<money>().moneyAmount -= 1;
+        Dropdown.GetComponent<contractselect>().potentialCustomers -= int.Parse(customerField.text);
     }
 
-    public void MinusMoneyLarge()
+    public void setCustomerSatisfaction()
     {
-        gameObject.GetComponent<money>().moneyAmount -= 10000;
-    }
-
-    public void MinusMoneyNone()
-    {
-        gameObject.GetComponent<money>().moneyAmount = 0;
+	Dropdown.GetComponent<contractselect>().customerSatisfaction = int.Parse(customerSatisfaction.value.ToString());
     }
 
     public void SellEverything()
@@ -47,71 +49,6 @@ public class debug : MonoBehaviour {
         {
             GameObject.Find("Dropdown").GetComponent<contractselect>().contractTaken[i] = 0;
         }
-    }
-
-    public void AddCustomerSmall()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers += 1;
-    }
-
-    public void AddCustomerMedium()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers += 100;
-    }
-
-    public void AddCustomerLarge()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers += 10000;
-    }
-
-    public void MinusCustomerSmall()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers -= 1;
-    }
-
-    public void MinusCustomerMedium()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers -= 100;
-    }
-
-    public void MinusCustomerLarge()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers -= 10000;
-    }
-
-    public void MinusCustomerNone()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().potentialCustomers = 0;
-    }
-
-    public void AddCustomerSatisfactionSmall()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction += 1;
-    }
-
-    public void AddCustomerSatisfactionLarge()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction += 10;
-    }
-
-    public void MinusCustomerSatisfactionSmall()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction -= 1;
-    }
-
-    public void MinusCustomerSatisfactionLarge()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction -= 10;
-    }
-
-    public void CustomerSatisfactionMin()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction = 0;
-    }
-
-    public void CustomerSatisfactionMax()
-    {
-        GameObject.Find("Dropdown").GetComponent<contractselect>().customerSatisfaction = 100;
     }
 
 }

@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour {
     public GameObject researchMenu;
     public GameObject marketingMenu;
     public GameObject debugButton;
-    public GameObject debugScreen;
+    public GameObject debugPanel;
 
     public Text tycoonSign;
 
@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour {
         sellMenu.SetActive(true);
         researchMenu.SetActive(true);
         marketingMenu.SetActive(true);
-        debugScreen.SetActive(false);
+        debugPanel.SetActive(false);
     }
 
     public Animator buyAnim;
@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour {
     public bool buyScreen = false;
     public bool sellScreen = false;
     public bool marketScreen = false;
+    public bool debugScreen = false;
 
     public void BuyMenu ()
     {
@@ -74,8 +75,18 @@ public class MenuManager : MonoBehaviour {
 
     public void DebugMenu()
     {
-        debugButton.SetActive(false);
-        debugScreen.SetActive(true);
-        tycoonSign.text = "Dev-Mode";
+	if (!debugScreen)
+        {
+            debugButton.SetActive(false);
+            debugPanel.SetActive(true);
+            tycoonSign.text = "Debug";
+	    debugScreen = true;
+        }
+        else
+        {
+            debugButton.SetActive(true);
+            debugPanel.SetActive(false);
+            debugScreen = false;
+        }
     }
 }
