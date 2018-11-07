@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour {
         {
             debugButton.SetActive(false);
             debugPanel.SetActive(true);
-            tycoonSign.text = "Debug";
+            tycoonSign.text = "TYCOON*";
 	    debugScreen = true;
         }
         else
